@@ -1,0 +1,20 @@
+{
+  "name": "d3-typescript",
+  "homepage": "https://github.com/TDD-Katas/d3-typescript",
+  "authors": [
+    "Julian Ghionoiu <iulian.ghionoiu@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "^4.11.0"
+  }
+}

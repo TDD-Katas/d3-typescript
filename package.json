@@ -1,0 +1,23 @@
+{
+  "name": "d3-typescript",
+  "version": "1.0.0",
+  "description": "Experiment with D3 V4 and Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TDD-Katas/d3-typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TDD-Katas/d3-typescript/issues"
+  },
+  "homepage": "https://github.com/TDD-Katas/d3-typescript#readme",
+  "devDependencies": {
+    "@types/d3": "^4.11.0",
+    "typescript": "^2.5.3"
+  }
+}

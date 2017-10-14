@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .chart div {
+            font: 10px sans-serif;
+            background-color: steelblue;
+            text-align: right;
+            padding: 3px;
+            margin: 1px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="chart"></div>
+<script src="../bower_components/d3/d3.js"></script>
+<script src="./ole.js"></script>
+<script>
+    var data = [30, 86, 168, 281, 303, 365];
+    new ole.chart(".chart").render(data);
+</script>
+</body>
+</html>
