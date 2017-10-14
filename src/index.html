@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .chart rect {
+
+        .bar {
             fill: steelblue;
         }
 
-        .chart text {
-            fill: white;
-            font: 10px sans-serif;
-            text-anchor: end;
+        .bar:hover {
+            fill: brown;
+        }
+
+        .axis--x path {
+            display: none;
         }
     </style>
 </head>
 <body>
-<svg class="chart"></svg>
+<svg width="960" height="500"></svg>
 <script src="../bower_components/d3/d3.js"></script>
 <script src="../dist/ole.js"></script>
 <script>
-    new ole.chart(".chart").render("data.tsv", 420, 20);
+    new ole.chart().render("data.tsv");
 </script>
 </body>
 </html>
