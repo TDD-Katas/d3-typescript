@@ -18,6 +18,6 @@
   "homepage": "https://github.com/TDD-Katas/d3-typescript#readme",
   "devDependencies": {
     "@types/d3": "^4.11.0",
-    "typescript": "^2.5.3"
+    "typescript": "^2.5.3",
   }
 }

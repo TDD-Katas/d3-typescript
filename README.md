@@ -38,4 +38,4 @@ Add both `.html` and `.ts` to a `src` folder. Intellij will automatically compil
 
 # Links
 
-https://hstefanski.wordpress.com/2015/06/07/creating-a-chart-with-d3-and-typescript-part-1/
+- D3 and Typescript: https://hstefanski.wordpress.com/2015/06/07/creating-a-chart-with-d3-and-typescript-part-1/

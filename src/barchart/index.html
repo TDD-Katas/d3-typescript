@@ -16,14 +16,25 @@
         .axis--x path {
             display: none;
         }
+
+        .axis text {
+            font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
     </style>
 </head>
 <body>
 <svg width="960" height="500"></svg>
-<script src="../bower_components/d3/d3.js"></script>
-<script src="../dist/ole.js"></script>
+<script src="../../bower_components/d3/d3.js"></script>
+<script src="../../dist/barchart/barchart.js"></script>
 <script>
-    new ole.chart().render("data.tsv");
+    barchart.render("data.tsv");
 </script>
 </body>
 </html>
