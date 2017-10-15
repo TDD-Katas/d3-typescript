@@ -1,24 +1,28 @@
 module three_circles {
-    export function render(dataLocation) {
-        let svg = d3.select("svg");
+    export function render(data: number[]) {
 
-        let circles = svg.selectAll("circle")
-            .data([32, 57, 112, 293], function(d: any) { return d; });
+        // Bind data to existing nodes, using the hash key
+        let circles = d3.select("svg")
+            .selectAll("circle")
+            .data(data, d => d + "")
+            .style("fill", "blue");
 
-        circles
-            .enter()
+        // Remove nodes that are not bound to data
+        circles.exit().remove();
+
+        // Add nodes
+        let circlesEnter = circles.enter()
             .append("circle")
-            .attr("cy", 60)
-            .attr("cx", function (d, i) {
-                return i * 100 + 30;
-            })
-            .attr("r", function (d: number) {
-                return Math.sqrt(d);
-            });
+            .style("fill", "red");
 
-        circles
-            .exit()
-            .remove();
+        // Update attributes of visible nodes (existing + added)
+        circlesEnter
+            .merge(circles)
+            .style("stroke", "black")
+            .attr("cy", 60)
+            .attr("cx", (d, i) => i * 100 + 30)
+            .attr("r", d => Math.sqrt(d));
+
     }
 
 }

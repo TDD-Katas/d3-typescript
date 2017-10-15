@@ -39,3 +39,4 @@ Add both `.html` and `.ts` to a `src` folder. Intellij will automatically compil
 # Links
 
 - D3 and Typescript: https://hstefanski.wordpress.com/2015/06/07/creating-a-chart-with-d3-and-typescript-part-1/
+- About selections: https://github.com/d3/d3-selection/issues/86
