@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nested selections</title>
+    <style>
+        text {
+            font: bold 48px monospace;
+        }
+
+        table {
+            color: white;
+            background-color: gray;
+        }
+
+        .update-row {
+            background-color: #1bffab;
+        }
+
+        .update-cell {
+            background-color: #1c1aa5;
+        }
+
+        .create-row {
+            background-color: #f9e379;
+        }
+
+        .create-cell {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr><td>  A</td><td>  B</td><td>  C</td><td>  D</td></tr>
+    </thead>
+    <tbody>
+    <tr><td>  .</td><td>  .</td><td>  .</td><td>  .</td></tr>
+    <tr><td>  .</td><td>  .</td><td>  .</td><td>  .</td></tr>
+    <tr><td>  .</td><td>  .</td><td>  .</td><td>  .</td></tr>
+    <tr><td>  .</td><td>  .</td><td>  .</td><td>  .</td></tr>
+    </tbody>
+</table>
+<script src="../../bower_components/d3/d3.js"></script>
+<script src="../../dist/nested_selections/nested_selections.js"></script>
+<script>
+    var matrix = [
+        [ 0,  1,  2,  3],
+        [ 4,  5,  6,  7],
+        [ 8,  9, 10, 11],
+        [12, 13, 14, 15]
+    ];
+    nested_selections.render(matrix);
+</script>
+</body>
+</html>
