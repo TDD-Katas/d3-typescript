@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update patterns</title>
+    <style>
+        text {
+            font: bold 48px monospace;
+        }
+
+        .enter {
+            fill: green;
+        }
+
+        .update {
+            fill: #333;
+        }
+
+        .exit {
+            fill: brown;
+        }
+    </style>
+</head>
+<body>
+<svg width="960" height="500"></svg>
+<script src="../../bower_components/d3/d3.js"></script>
+<script src="../../dist/update_patterns/update_patterns.js"></script>
+<script>
+    update_patterns.render("abcdefghijklmnopqrstuvwxyz".split(""));
+</script>
+</body>
+</html>
