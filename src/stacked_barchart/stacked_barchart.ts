@@ -7,13 +7,13 @@ module stacked_barchart {
             height = +svg.attr("height") - margin.top - margin.bottom,
             g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        let x = d3.scaleBand()
-            .rangeRound([0, width])
+        let x = d3.scaleLinear()
+            .rangeRound([0, width]);
+
+        let y = d3.scaleBand()
+            .rangeRound([height, 0])
             .paddingInner(0.05)
             .align(0.1);
-
-        let y = d3.scaleLinear()
-            .rangeRound([height, 0]);
 
         let z = d3.scaleOrdinal()
             .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
@@ -34,12 +34,8 @@ module stacked_barchart {
             data.sort(function (a, b) {
                 return b.total - a.total;
             });
-            x.domain(data.map(function (d) {
-                return d.State;
-            }));
-            y.domain([0, d3.max(data, function (d) {
-                return d.total;
-            })]).nice();
+            x.domain([0, d3.max(data, d => d.total)]).nice();
+            y.domain(data.map(d => d.State));
             z.domain(keys);
 
             g.append("g")
@@ -50,28 +46,29 @@ module stacked_barchart {
                 .selectAll("rect")
                 .data(d => d)
                 .enter().append("rect")
-                .attr("x", function (d: any) {
-                    return x(d.data.State);
+                .attr("x", function (d) {
+                    return x(d[0]);
                 })
-                .attr("y", function (d) {
-                    return y(d[1]);
+                .attr("y", function (d: any) {
+                    return y(d.data.State);
                 })
-                .attr("height", function (d) {
-                    return y(d[0]) - y(d[1]);
+                .attr("width", function (d) {
+                    return x(d[1]) - x(d[0]);
                 })
-                .attr("width", x.bandwidth());
+                .attr("height", y.bandwidth());
+
 
             g.append("g")
                 .attr("class", "axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x));
+                .attr("transform", "translate(0, 0)")
+                .call(d3.axisLeft(y));
 
             g.append("g")
                 .attr("class", "axis")
-                .call(d3.axisLeft(y).ticks(null, "s"))
+                .call(d3.axisTop(x).ticks(null, "s"))
                 .append("text")
-                .attr("x", 2)
-                .attr("y", y(y.ticks().pop()) + 0.5)
+                .attr("x", width/2 - 60)
+                .attr("y", 2)
                 .attr("dy", "0.32em")
                 .attr("fill", "#000")
                 .attr("font-weight", "bold")
@@ -82,6 +79,7 @@ module stacked_barchart {
                 .attr("font-family", "sans-serif")
                 .attr("font-size", 10)
                 .attr("text-anchor", "end")
+                .attr("transform", "translate(0, 20)")
                 .selectAll("g")
                 .data(keys.slice().reverse())
                 .enter().append("g")
@@ -90,18 +88,16 @@ module stacked_barchart {
                 });
 
             legend.append("rect")
-                .attr("x", width - 19)
+                .attr("x", width - 24)
                 .attr("width", 19)
                 .attr("height", 19)
                 .attr("fill", d => z(d) as string);
 
             legend.append("text")
-                .attr("x", width - 24)
+                .attr("x", width - 40)
                 .attr("y", 9.5)
-                .attr("dy", "0.32em")
-                .text(function (d) {
-                    return d;
-                });
+                .attr("dx", "0.32em")
+                .text(d => d);
         });
     }
 
