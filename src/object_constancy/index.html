@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object constancy</title>
+    <style>
+
+        body {
+            background: #fcfcfa;
+            color: #333;
+            font-family: "PT Serif", serif;
+            margin: 1em auto 4em auto;
+            position: relative;
+            width: 960px;
+        }
+
+        body > p, li > p {
+            line-height: 1.5em;
+        }
+
+        body > p {
+            width: 720px;
+        }
+
+        svg {
+            font: 10px sans-serif;
+        }
+
+        .bar rect {
+            fill: steelblue;
+        }
+
+        .bar:hover rect {
+            fill: brown;
+        }
+
+        .value {
+            fill: white;
+        }
+
+        .axis {
+            shape-rendering: crispEdges;
+        }
+
+        .axis path {
+            stroke: none;
+        }
+
+        .x.axis line {
+            stroke: #fff;
+            stroke-opacity: .8;
+        }
+
+        .y.axis path {
+            stroke: black;
+        }
+
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+    </style>
+</head>
+<body>
+<h1>Object Constancy</h1>
+<p id="chart"></p>
+<p id="menu"><select></select></p>
+<script src="../../bower_components/d3/d3.js"></script>
+<script src="../../dist/object_constancy/object_constancy.js"></script>
+<script>
+    var chart = new object_constancy.chart("#chart", "#menu select");
+    chart.render("states-age.csv");
+</script>
+</body>
+</html>
