@@ -4,19 +4,9 @@ module stacked_barchart {
         let svg = d3.select("svg"),
             margin = {top: 20, right: 20, bottom: 30, left: 40},
             width = +svg.attr("width") - margin.left - margin.right,
-            height = +svg.attr("height") - margin.top - margin.bottom,
             g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        let x = d3.scaleLinear()
-            .rangeRound([0, width]);
 
-        let y = d3.scaleBand()
-            .rangeRound([height, 0])
-            .paddingInner(0.05)
-            .align(0.1);
-
-        let z = d3.scaleOrdinal()
-            .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
         d3.csv("data.csv", function (d: any, i, columns) {
             let t = 0;
@@ -34,8 +24,20 @@ module stacked_barchart {
             data.sort(function (a, b) {
                 return b.total - a.total;
             });
+
+            let x = d3.scaleLinear().rangeRound([0, width]);
             x.domain([0, d3.max(data, d => d.total)]).nice();
+
+            let height = 20 * data.length + margin.top;
+            svg.attr("height", height);
+            let y = d3.scaleBand()
+                .rangeRound([height, 0])
+                .paddingInner(0.05)
+                .align(0.1);
             y.domain(data.map(d => d.State));
+
+            let z = d3.scaleOrdinal()
+                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
             z.domain(keys);
 
             g.append("g")
