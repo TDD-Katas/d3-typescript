@@ -29,9 +29,32 @@ The typings are only needed by the compiler so we only need them in the node nod
 npm install @types/d3 --save-dev
 ```
 
+# Create a `tsconfig.json` file that looks like this:
+```json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "dist/"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
+```
+
 Configure IntelliJ to compile Typescript. Do not use the TypeService as it will cause issues with the types detected
 
+
 ## Folder structure
+
+Create:
+```
+dist/
+src/
+```
 
 Add both `.html` and `.ts` to a `src` folder. Intellij will automatically compile to .ts
 
